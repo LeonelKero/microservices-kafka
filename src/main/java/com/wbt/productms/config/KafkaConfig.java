@@ -1,5 +1,6 @@
 package com.wbt.productms.config;
 
+import com.wbt.productms.util.Utils;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,9 @@ public class KafkaConfig {
     @Bean
     NewTopic createTopic() {
         return TopicBuilder
-                .name("product-created-events-topics")
+                .name(Utils.PRODUCT_CREATED_EVENTS_TOPICS)
                 .partitions(3)
-                .replicas(3)
+                .replicas(3) // correspond to the number of brokers
                 .configs(Map.of("min.insync.replicas", "2"))
                 .build();
     }

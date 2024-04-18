@@ -8,7 +8,7 @@ spring:
   # APACHE KAFKA CONFIGURATION - Producer
   kafka:
     producer:
-      bootstrap-servers: # Broker servers
+      bootstrap-servers: # initial point to connect to the cluster
         - localhost:9092
         - localhost:9094
       key-serializer: org.apache.kafka.common.serialization.StringSerializer # Key data type serializer
