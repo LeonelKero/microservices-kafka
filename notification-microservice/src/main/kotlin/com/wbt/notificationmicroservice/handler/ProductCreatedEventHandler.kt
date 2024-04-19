@@ -1,4 +1,4 @@
-package com.wbt.emailnotificationmicroservice.handler
+package com.wbt.notificationmicroservice.handler
 
 import com.wbt.corelibrary.ProductCreatedEvent
 import org.slf4j.LoggerFactory
