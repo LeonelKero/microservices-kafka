@@ -14,6 +14,6 @@ class ProductCreatedEventHandler {
 
     @KafkaHandler
     fun handler(productCreatedEvent: ProductCreatedEvent) {
-        logger.info("***** Created product message arrived")
+        logger.info("***** Created product message arrived, ${productCreatedEvent.title}")
     }
 }
