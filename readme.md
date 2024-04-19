@@ -10,6 +10,9 @@
 - Broker
 - Partition
 - Leader/Followers
+- Microservices
+- Core library
+- Async/Sync communication
 
 ## Technologies
 
@@ -17,3 +20,4 @@
 - Kotlin
 - Spring Web
 - Spring Kafka
+- Maven
