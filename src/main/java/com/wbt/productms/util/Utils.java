@@ -1,5 +1,5 @@
 package com.wbt.productms.util;
 
 public record Utils() {
-    public static final String PRODUCT_CREATED_EVENTS_TOPICS = "product-created-events-topics";
+    public static final String PRODUCT_CREATED_EVENT_TOPIC = "product-created-event-topic";
 }

@@ -14,7 +14,7 @@ public class KafkaConfig {
     @Bean
     NewTopic createTopic() {
         return TopicBuilder
-                .name(Utils.PRODUCT_CREATED_EVENTS_TOPICS)
+                .name(Utils.PRODUCT_CREATED_EVENT_TOPIC)
                 .partitions(3)
                 .replicas(3) // correspond to the number of brokers
                 .configs(Map.of("min.insync.replicas", "2"))

@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
         // create event model
         final var createdProductEvent = new ProductCreatedEvent(productId, restModel.title(), restModel.price(), restModel.quantity());
         // publish event
-        final var futureResponse = this.kafkaTemplate.send(Utils.PRODUCT_CREATED_EVENTS_TOPICS, productId, createdProductEvent);
+        final var futureResponse = this.kafkaTemplate.send(Utils.PRODUCT_CREATED_EVENT_TOPIC, productId, createdProductEvent);
         futureResponse.whenComplete((sendResult, throwable) -> {
             if (throwable != null) {
                 // in case an error occurred
