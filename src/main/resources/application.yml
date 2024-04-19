@@ -8,6 +8,10 @@ spring:
   # APACHE KAFKA CONFIGURATION - Producer
   kafka:
     producer:
+      acks: all # just wait acknowledgement from all servers
+      retries: 10 # retry 10 times if unable to send message
+      properties:
+        retry.backoff.ms: 1000 # 1s interval after each retry
       bootstrap-servers: # initial point to connect to the cluster
         - localhost:9092
         - localhost:9094
