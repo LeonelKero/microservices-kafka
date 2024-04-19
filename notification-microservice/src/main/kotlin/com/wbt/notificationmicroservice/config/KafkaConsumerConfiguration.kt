@@ -28,6 +28,7 @@ class KafkaConsumerConfiguration {
             ?.let { pkg -> config.put(JsonDeserializer.TRUSTED_PACKAGES, pkg) }
         environment.getProperty("spring.kafka.consumer.group-id")
             ?.let { config.put(ConsumerConfig.GROUP_ID_CONFIG, it) }
+
         return DefaultKafkaConsumerFactory(config)
     }
 
