@@ -1,11 +1,11 @@
-package com.wbt.emailnotificationmicroservice
+package com.wbt.notificationmicroservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class EmailNotificationMicroserviceApplication
+class NotificationMicroserviceApplication
 
 fun main(args: Array<String>) {
-	runApplication<EmailNotificationMicroserviceApplication>(*args)
+	runApplication<NotificationMicroserviceApplication>(*args)
 }

@@ -1,10 +1,10 @@
-package com.wbt.emailnotificationmicroservice
+package com.wbt.notificationmicroservice
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class EmailNotificationMicroserviceApplicationTests {
+class NotificationMicroserviceApplicationTests {
 
 	@Test
 	fun contextLoads() {
