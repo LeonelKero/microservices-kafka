@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: email-notification-microservice
+    name: notification-microservice
   # KAFKA
   kafka:
     consumer:
