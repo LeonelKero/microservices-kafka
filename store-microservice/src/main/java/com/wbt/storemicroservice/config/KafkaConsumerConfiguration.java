@@ -7,11 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
+import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class KafkaConsumerConfiguration {
@@ -20,7 +23,7 @@ public class KafkaConsumerConfiguration {
     Environment env;
 
     @Bean
-    public ConsumerFactory<String, Object> consumerFactory() {
+    public Map<String, Object> consumerConfig() {
         final var config = new HashMap<String, Object>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("spring.kafka.consumer.bootstrap-servers"));
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -28,14 +31,19 @@ public class KafkaConsumerConfiguration {
         config.put(JsonDeserializer.TRUSTED_PACKAGES, env.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
         config.put(ConsumerConfig.GROUP_ID_CONFIG, env.getProperty("spring.kafka.consumer.group-id"));
 
-        return new DefaultKafkaConsumerFactory<>(config);
+        return config;
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory(final ConsumerFactory<String, Object> consumerFactory) {
-        final var listenerContainer = new ConcurrentKafkaListenerContainerFactory<String, Object>();
-        listenerContainer.setConsumerFactory(consumerFactory);
+    public ConsumerFactory<String, Object> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    }
 
-        return listenerContainer;
+    @Bean
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> kafkaListenerContainerFactory(final ConsumerFactory<String, Object> consumerFactory) {
+        final var factory = new ConcurrentKafkaListenerContainerFactory<String, Object>();
+        factory.setConsumerFactory(consumerFactory);
+
+        return factory;
     }
 }
