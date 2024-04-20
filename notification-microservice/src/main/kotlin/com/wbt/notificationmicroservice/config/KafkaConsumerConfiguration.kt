@@ -11,13 +11,13 @@ import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
 import org.springframework.kafka.support.serializer.JsonDeserializer
 
-@Configuration
+//@Configuration
 class KafkaConsumerConfiguration {
 
-    @Autowired
+//    @Autowired
     private lateinit var environment: Environment
 
-    @Bean
+//    @Bean
     fun consumerFactory(): ConsumerFactory<String, Any> {
         val config: MutableMap<String, Any> = HashMap()
         environment.getProperty("spring.kafka.consumer.bootstrap-servers")
@@ -32,7 +32,7 @@ class KafkaConsumerConfiguration {
         return DefaultKafkaConsumerFactory(config)
     }
 
-    @Bean
+//    @Bean
     fun kafkaListenercontainerFactory(consumerFactory: ConsumerFactory<String, Any>): ConcurrentKafkaListenerContainerFactory<String, Any> {
         return ConcurrentKafkaListenerContainerFactory<String, Any>().apply {
             setConsumerFactory(consumerFactory)
