@@ -30,6 +30,7 @@ class KafkaConsumerConfiguration {
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers)
         config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
         config[ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG] = JsonDeserializer::class.java
+//        config.put(JsonDeserializer.TYPE_MAPPINGS, "productCreatedEvent:com.wbt.corelibrary.ProductCreatedEvent")
         config.put(JsonDeserializer.TRUSTED_PACKAGES, trustedPackages)
         config.put(ConsumerConfig.GROUP_ID_CONFIG, groupId)
 
