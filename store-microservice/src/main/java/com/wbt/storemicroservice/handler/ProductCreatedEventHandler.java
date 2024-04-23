@@ -15,7 +15,7 @@ public class ProductCreatedEventHandler {
 
     @KafkaHandler
     public void handler(final ProductCreatedEvent productCreatedEvent) {
-        LOGGER.info(">>>> New product created " + productCreatedEvent);
+        LOGGER.info(">>>> New product created " + productCreatedEvent.getTitle());
     }
 
 }
