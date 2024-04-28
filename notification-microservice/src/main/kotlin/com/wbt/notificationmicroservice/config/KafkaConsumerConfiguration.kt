@@ -28,7 +28,8 @@ class KafkaConsumerConfiguration {
     fun consumerFactory(): ConsumerFactory<String, Any> {
         val config: MutableMap<String, Any> = HashMap()
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers)
-        config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
+        config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = "org.apache.kafka.common.serialization.StringDeserializer"
+//        config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
         config[ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG] = JsonDeserializer::class.java
 //        config.put(JsonDeserializer.TYPE_MAPPINGS, "productCreatedEvent:com.wbt.corelibrary.ProductCreatedEvent")
         config.put(JsonDeserializer.TRUSTED_PACKAGES, trustedPackages)
